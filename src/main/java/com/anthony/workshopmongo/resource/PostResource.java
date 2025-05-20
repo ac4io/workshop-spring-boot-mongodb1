@@ -21,16 +21,15 @@ public class PostResource {
 	private PostService service;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Post> findById(@PathVariable String id){
-		Post obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Post> findById(@PathVariable String id) {
+	    Post obj = service.findById(id);
+	    return ResponseEntity.ok().body(obj);
 	}
-	
-	@GetMapping("/{titlesearch}")
-	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text){
-		
-		text = URL.decodeParam(text);
-		List<Post> list = service.findByTitle(text);
-		return ResponseEntity.ok().body(list);
+
+	@GetMapping("/titlesearch")
+	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
+	    text = URL.decodeParam(text);
+	    List<Post> list = service.findByTitle(text);
+	    return ResponseEntity.ok().body(list);
 	}
 }
